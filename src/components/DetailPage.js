@@ -143,17 +143,16 @@ const POST_QUERY = gql`
 `
 
 const PUBLISH_MUTATION = gql`
-  mutation PublishMutation($id: ID!) {
-    publish: posts(id: $id) {
-      id
-      isPublished
+  mutation PublishMutation($id: Int!) {
+    update_posts(where: { id: { _eq: $id } }, _set: { isPublished: true }) {
+      affected_rows
     }
   }
 `
 
 const DELETE_MUTATION = gql`
-  mutation DeleteMutatoin($id: ID!) {
-    deletePost(id: $id) {
+  mutation DeleteMutatoin($id: Int!) {
+    delete_posts(id: $id) {
       id
     }
   }
