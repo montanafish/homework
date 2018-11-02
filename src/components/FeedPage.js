@@ -42,7 +42,7 @@ export default class FeedPage extends Component {
 
 export const FEED_QUERY = gql`
   query FeedQuery {
-    feed: posts {
+    feed: posts(where: { isPublished: { _eq: true } }) {
       id
       text
       title

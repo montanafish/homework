@@ -43,7 +43,7 @@ export default class DraftsPage extends Component {
 
 export const DRAFTS_QUERY = gql`
   query DraftsQuery {
-    drafts: posts {
+    drafts: posts(where: { isPublished: { _eq: false } }) {
       id
       text
       title

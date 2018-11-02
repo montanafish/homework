@@ -12,25 +12,17 @@ class CreatePage extends Component {
 
   render() {
     return (
-      <Mutation
-        mutation={CREATE_DRAFT_MUTATION}
-        update={(cache, { data }) => {
-          const { drafts } = cache.readQuery({ query: DRAFTS_QUERY })
-          cache.writeQuery({
-            query: DRAFTS_QUERY,
-            data: { drafts: drafts.concat([data.createDraft]) },
-          })
-        }}
-      >
-        {(insert_posts, { data, loading, error }) => {
+      <Mutation mutation={CREATE_DRAFT_MUTATION}>
+        {(createDraft, { data, loading, error }) => {
           return (
             <div className="pa4 flex justify-center bg-white">
               <form
                 onSubmit={async e => {
                   e.preventDefault()
                   const { title, text } = this.state
-                  await insert_posts({
-                    variables: { title, text },
+                  await createDraft({
+                    variables: { objects: [{ title, text }] },
+                    refetchQueries: [{ query: DRAFTS_QUERY }],
                   })
                   this.props.history.replace('/drafts')
                 }}
@@ -72,11 +64,10 @@ class CreatePage extends Component {
 
 const CREATE_DRAFT_MUTATION = gql`
   mutation CreateDraftMutation($objects: [posts_insert_input!]!) {
-    insert_posts(objects: $objects) {
+    createDraft: insert_posts(objects: $objects) {
+      affected_rows
       returning {
         id
-        title
-        text
       }
     }
   }

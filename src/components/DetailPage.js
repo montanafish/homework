@@ -7,8 +7,9 @@ import { FEED_QUERY } from './FeedPage'
 
 class DetailPage extends Component {
   render() {
+    const postId = this.props.match.params && this.props.match.params.id
     return (
-      <Query query={POST_QUERY} variables={{ id: this.props.match.params.id }}>
+      <Query query={POST_QUERY} variables={{ id: postId }}>
         {({ data, loading, error }) => {
           if (loading) {
             return (
@@ -29,6 +30,14 @@ class DetailPage extends Component {
             )
           }
 
+          if (data.posts.length === 0) {
+            return (
+              <div className="flex w-100 h-100 items-center justify-center pt7">
+                <div>No record is found</div>
+              </div>
+            )
+          }
+
           const post = data.posts[0]
           const action = this._renderAction(post)
           return (
@@ -45,23 +54,7 @@ class DetailPage extends Component {
 
   _renderAction = ({ id, isPublished }) => {
     const publishMutation = (
-      <Mutation
-        mutation={PUBLISH_MUTATION}
-        update={(cache, { data }) => {
-          const { drafts } = cache.readQuery({ query: DRAFTS_QUERY })
-          const { feed } = cache.readQuery({ query: FEED_QUERY })
-          cache.writeQuery({
-            query: FEED_QUERY,
-            data: { feed: feed.concat([data.publish]) },
-          })
-          cache.writeQuery({
-            query: DRAFTS_QUERY,
-            data: {
-              drafts: drafts.filter(draft => draft.id !== data.publish.id),
-            },
-          })
-        }}
-      >
+      <Mutation mutation={PUBLISH_MUTATION}>
         {(publish, { data, loading, error }) => {
           return (
             <a
@@ -69,6 +62,7 @@ class DetailPage extends Component {
               onClick={async () => {
                 await publish({
                   variables: { id },
+                  refetchQueries: [{ query: DRAFTS_QUERY }, { query: FEED_QUERY }],
                 })
                 this.props.history.replace('/')
               }}
@@ -80,28 +74,7 @@ class DetailPage extends Component {
       </Mutation>
     )
     const deleteMutation = (
-      <Mutation
-        mutation={DELETE_MUTATION}
-        update={(cache, { data }) => {
-          if (isPublished) {
-            const { feed } = cache.readQuery({ query: FEED_QUERY })
-            cache.writeQuery({
-              query: FEED_QUERY,
-              data: {
-                feed: feed.filter(post => post.id !== data.deletePost.id),
-              },
-            })
-          } else {
-            const { drafts } = cache.readQuery({ query: DRAFTS_QUERY })
-            cache.writeQuery({
-              query: DRAFTS_QUERY,
-              data: {
-                drafts: drafts.filter(draft => draft.id !== data.deletePost.id),
-              },
-            })
-          }
-        }}
-      >
+      <Mutation mutation={DELETE_MUTATION}>
         {(deletePost, { data, loading, error }) => {
           return (
             <a
@@ -109,8 +82,15 @@ class DetailPage extends Component {
               onClick={async () => {
                 await deletePost({
                   variables: { id },
+                  refetchQueries: [{ query: DRAFTS_QUERY }, { query: FEED_QUERY }],
+                }).then(result => {
+                  console.log('isPublished', result.data.deletePost.returning[0].isPublished)
+                  if (result.data.deletePost.returning[0].isPublished) {
+                    this.props.history.replace('/')
+                  } else {
+                    this.props.history.replace('/drafts')
+                  }
                 })
-                this.props.history.replace('/')
               }}
             >
               Delete
@@ -152,8 +132,12 @@ const PUBLISH_MUTATION = gql`
 
 const DELETE_MUTATION = gql`
   mutation DeleteMutatoin($id: Int!) {
-    delete_posts(id: $id) {
-      id
+    deletePost: delete_posts(where: { id: { _eq: $id } }) {
+      affected_rows
+      returning {
+        id
+        isPublished
+      }
     }
   }
 `
