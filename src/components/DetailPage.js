@@ -21,17 +21,20 @@ class DetailPage extends Component {
           if (error) {
             return (
               <div className="flex w-100 h-100 items-center justify-center pt7">
-                <div>An unexpected error occured.</div>
+                <div>
+                  {JSON.stringify(error, null, 2)}
+                  An unexpected error occured.
+                </div>
               </div>
             )
           }
 
-          const { post } = data
+          const post = data.posts[0]
           const action = this._renderAction(post)
           return (
             <Fragment>
-              <h1 className="f3 black-80 fw4 lh-solid">{data.post.title}</h1>
-              <p className="black-80 fw3">{data.post.text}</p>
+              <h1 className="f3 black-80 fw4 lh-solid">{post.title}</h1>
+              <p className="black-80 fw3">{post.text}</p>
               {action}
             </Fragment>
           )
@@ -129,8 +132,8 @@ class DetailPage extends Component {
 }
 
 const POST_QUERY = gql`
-  query PostQuery($id: ID!) {
-    post: posts(where: { id: { _eq: $id } }) {
+  query PostQuery($id: Int!) {
+    posts(where: { id: { _eq: $id } }) {
       id
       title
       text
