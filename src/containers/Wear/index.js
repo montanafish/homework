@@ -36,12 +36,13 @@ class Wear extends Component {
         <Router>
           <Fragment>
             <Layout className="layout">
+              <Header />
               <Header>
                 <div className="logo" />
                 <Menu
                   theme="dark"
                   mode="horizontal"
-                  defaultSelectedKeys={["2"]}
+                  defaultSelectedKeys={["1"]}
                   style={{ lineHeight: "64px" }}
                 >
                   <Menu.Item key="1">
@@ -56,7 +57,9 @@ class Wear extends Component {
                 </Menu>
               </Header>
               <Layout>
-                <Sider>Sider</Sider>
+                <Sider width={200} style={{ background: "#fff" }}>
+                  Sider
+                </Sider>
                 <Content style={{ padding: "0 50px" }}>
                   <Breadcrumb style={{ margin: "16px 0" }}>
                     <Breadcrumb.Item> </Breadcrumb.Item>
@@ -64,29 +67,30 @@ class Wear extends Component {
                     <Breadcrumb.Item>App</Breadcrumb.Item>
                   </Breadcrumb>
                   <div
-                    style={{ background: "#fff", padding: 24, minHeight: 280 }}
+                    style={{ background: "#fff", padding: 24, minHeight: 560 }}
                   >
-                    Content
+                    <Switch>
+                      Content
+                      <Route path="/" exact component={TopPage} />
+                      <Route
+                        path="/Cordinate"
+                        exact
+                        component={CordinatePage}
+                      />
+                      <Route
+                        path="/UserCordinater"
+                        exact
+                        component={UserCordinaterPage}
+                      />
+                      <Route exact component={NoPage} />
+                    </Switch>
                   </div>
                 </Content>
               </Layout>
               <Footer style={{ textAlign: "center" }}>
-                Ant Design ©2018 Created by Ant UED
+                COPYRIGHT ©XXXX Technologies
               </Footer>
             </Layout>
-
-            <div>
-              <Switch>
-                <Route path="/" exact component={TopPage} />
-                <Route path="/Cordinate" exact component={CordinatePage} />
-                <Route
-                  path="/UserCordinater"
-                  exact
-                  component={UserCordinaterPage}
-                />
-                <Route exact component={NoPage} />
-              </Switch>
-            </div>
           </Fragment>
         </Router>
       </ApolloProvider>
