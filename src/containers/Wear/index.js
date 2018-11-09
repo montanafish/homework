@@ -16,9 +16,10 @@ import UserCordinaterPage from "../../components/UserCordinaterPage";
 import CordinatePage from "../../components/CordinatePage";
 import NoPage from "../../components/NoPage";
 
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Row, Column, Input, Layout, Menu, Breadcrumb } from "antd";
 
 const { Header, Footer, Sider, Content } = Layout;
+const Search = Input.Search;
 
 const client = new ApolloClient({
   uri: "https://hamlet-staging.herokuapp.com/v1alpha1/graphql"
@@ -36,9 +37,48 @@ class Wear extends Component {
         <Router>
           <Fragment>
             <Layout className="layout">
-              <Header />
+              <Header style={{ position: "fixed", width: "100%" }}>
+                <Search
+                  placeholder="コーディネートやユーザーを探す"
+                  onSearch={value => console.log(value)}
+                  style={{
+                    width: 264,
+                    height: 36,
+                    position: "relative",
+                    background: "#f5f5f5"
+                  }}
+                />
+
+                <h1
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    top: 0,
+                    margin: "0 0 0 -75px",
+                    width: 150,
+                    height: 54
+                  }}
+                >
+                  <a
+                    href=""
+                    style={{
+                      fontSize: 30,
+                      fontWeight: "bold",
+                      color: "#000",
+                      lineHeight: 1,
+                      letterSpacing: 0,
+                      display: "block",
+                      width: "100%",
+                      height: "100%",
+                      textAlign: "center",
+                      padding: "16px 0 0 0 "
+                    }}
+                  >
+                    W E A R
+                  </a>
+                </h1>
+              </Header>
               <Header>
-                <div className="logo" />
                 <Menu
                   theme="dark"
                   mode="horizontal"
@@ -61,11 +101,6 @@ class Wear extends Component {
                   Sider
                 </Sider>
                 <Content style={{ padding: "0 50px" }}>
-                  <Breadcrumb style={{ margin: "16px 0" }}>
-                    <Breadcrumb.Item> </Breadcrumb.Item>
-                    <Breadcrumb.Item>List</Breadcrumb.Item>
-                    <Breadcrumb.Item>App</Breadcrumb.Item>
-                  </Breadcrumb>
                   <div
                     style={{ background: "#fff", padding: 24, minHeight: 560 }}
                   >
