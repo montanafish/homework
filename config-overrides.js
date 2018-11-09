@@ -9,9 +9,14 @@ module.exports = function override(config, env) {
 
   config = rewireLess.withLoaderOptions({
     modifyVars: {
-      "@primary-color": "#000000 !important",
+      "@primary-color": "#000000",
+      "@layout-body-background": "#f6f7f8 !important",
       "@layout-header-background": "#ffffff !important",
-      "@layout-header-height": "54px !important"
+      "@layout-sider-background": "#f6f7f8 !important",
+      "@layout-footer-background": "#ffffff !important",
+      "@layout-header-height": "54px !important",
+      "@font-family":
+        '"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Lucida Grande", "メイリオ", Verdana, "ＭＳ Ｐゴシック", sans-serif !important'
     },
     javascriptEnabled: true
   })(config, env);
