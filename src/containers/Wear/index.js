@@ -3,6 +3,7 @@ import { Query, Mutation } from "react-apollo";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import "./index.css";
+import banner from "../../assets/spring_pc_hdr.png";
 import {
   NavLink,
   BrowserRouter as Router,
@@ -16,16 +17,7 @@ import UserCordinaterPage from "../../components/UserCordinaterPage";
 import CordinatePage from "../../components/CordinatePage";
 import NoPage from "../../components/NoPage";
 
-import {
-  Radio,
-  Row,
-  Column,
-  Input,
-  Layout,
-  Menu,
-  Icon,
-  Breadcrumb
-} from "antd";
+import { Radio, Row, Input, Layout, Menu, Icon, Breadcrumb } from "antd";
 
 const { Header, Footer, Sider, Content } = Layout;
 const Search = Input.Search;
@@ -125,95 +117,115 @@ class Wear extends Component {
                 </div>
               </Header>
             </Layout>
+            <Layout style={{ padding: "54px 0 0 0 " }}>
+              <div
+                style={{
+                  height: 56,
+                  textAlign: "center",
+                  overflow: "hidden",
+                  background: "#766d3f"
+                }}
+              >
+                <p>
+                  <a href="">
+                    <img alt="banner" src={banner} width="990" height="56" />
+                  </a>
+                </p>
+              </div>
 
-            <Menu
-              mode="horizontal"
-              defaultSelectedKeys={["1"]}
-              style={{
-                textAlign: "center",
-                background: "#fff",
-                padding: "54px 0 0 0 ",
-                color: ""
-              }}
-            >
-              <Menu.Item
-                key="1"
+              <Menu
+                mode="horizontal"
+                defaultSelectedKeys={["1"]}
                 style={{
-                  width: "160px",
-                  height: "46px",
-                  fontSize: "17px",
-                  color: "#aaa",
-                  fontFamily:
-                    ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
+                  textAlign: "center",
+                  background: "#fff"
                 }}
               >
-                <Link to="/Cordinate">ALL</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="2"
-                style={{
-                  width: "160px",
-                  height: "46px",
-                  fontSize: "17px",
-                  color: "#aaa",
-                  fontFamily:
-                    ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
-                }}
-              >
-                <Link to="/">MAN</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="3"
-                style={{
-                  width: "160px",
-                  height: "46px",
-                  fontSize: "17px",
-                  color: "#aaa",
-                  fontFamily:
-                    ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
-                }}
-              >
-                <Link to="/UserCordinater">WOMAN</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="4"
-                style={{
-                  width: "160px",
-                  height: "46px",
-                  fontSize: "17px",
-                  color: "#aaa",
-                  fontFamily:
-                    ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
-                }}
-              >
-                <Link to="/kidsCordinate">KIDS</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="5"
-                style={{
-                  width: "160px",
-                  height: "46px",
-                  fontSize: "17px",
-                  color: "#aaa",
-                  fontFamily:
-                    ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
-                }}
-              >
-                <Link to="worldCordinate">WORLD</Link>
-              </Menu.Item>
-            </Menu>
+                <Menu.Item
+                  key="1"
+                  style={{
+                    height: "46px",
+                    fontSize: "17px",
+                    fontFamily:
+                      ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
+                  }}
+                >
+                  <div style={{ width: 115 }}>
+                    <Link to="/Cordinate">ALL</Link>
+                  </div>
+                </Menu.Item>
+                <Menu.Item
+                  key="2"
+                  style={{
+                    width: "160px",
+                    height: "46px",
+                    fontSize: "17px",
+                    fontFamily:
+                      ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
+                  }}
+                >
+                  <Link to="/">MEN</Link>
+                </Menu.Item>
+                <Menu.Item
+                  key="3"
+                  style={{
+                    width: "160px",
+                    height: "46px",
+                    fontSize: "17px",
+                    fontFamily:
+                      ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
+                  }}
+                >
+                  <Link to="/UserCordinater">WOMEN</Link>
+                </Menu.Item>
+                <Menu.Item
+                  key="4"
+                  style={{
+                    width: "160px",
+                    height: "46px",
+                    fontSize: "17px",
+                    fontFamily:
+                      ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
+                  }}
+                >
+                  <Link to="/kidsCordinate">KIDS</Link>
+                </Menu.Item>
+                <Menu.Item
+                  key="5"
+                  style={{
+                    width: "160px",
+                    height: "46px",
+                    fontSize: "17px",
+                    fontFamily:
+                      ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
+                  }}
+                >
+                  <Link to="worldCordinate">WORLD</Link>
+                </Menu.Item>
+              </Menu>
+            </Layout>
 
             <Layout style={{ padding: "10px 0 0 0 " }}>
               <Row style={{ margin: "13px auto 0 auto" }}>
-                <Radio.Group defaultValue="a" buttonStyle="solid" sytle={{}}>
-                  <Radio.Button value="a">おすすめ</Radio.Button>
-                  <Radio.Button value="b">タイムライン</Radio.Button>
+                <Radio.Group defaultValue="a" buttonStyle="solid">
+                  <Radio.Button
+                    value="a"
+                    style={{ width: 140, textAlign: "center" }}
+                  >
+                    おすすめ
+                  </Radio.Button>
+                  <Radio.Button
+                    value="b"
+                    style={{ width: 140, textAlign: "center" }}
+                  >
+                    タイムライン
+                  </Radio.Button>
                 </Radio.Group>
               </Row>
               <Layout style={{ margin: "30px auto 0 auto" }}>
                 <Layout style={{ width: 990 }}>
                   <Sider width={180}>
-                    <h2>探す</h2>
+                    <h2 style={{ fontSize: "18px" }}>探す</h2>
                     <Menu
                       mode="inline"
                       defaultSelectedKeys={["1"]}
@@ -228,23 +240,20 @@ class Wear extends Component {
                     </Menu>
                   </Sider>
                   <Content style={{ padding: "0 50 0 0px" }}>
-                    <div style={{ padding: 24, minHeight: 560 }}>
-                      <Switch>
-                        Content
-                        <Route path="/" exact component={TopPage} />
-                        <Route
-                          path="/Cordinate"
-                          exact
-                          component={CordinatePage}
-                        />
-                        <Route
-                          path="/UserCordinater"
-                          exact
-                          component={UserCordinaterPage}
-                        />
-                        <Route exact component={NoPage} />
-                      </Switch>
-                    </div>
+                    <Switch>
+                      <Route path="/" exact component={TopPage} />
+                      <Route
+                        path="/Cordinate"
+                        exact
+                        component={CordinatePage}
+                      />
+                      <Route
+                        path="/UserCordinater"
+                        exact
+                        component={UserCordinaterPage}
+                      />
+                      <Route exact component={NoPage} />
+                    </Switch>
                   </Content>
                 </Layout>
               </Layout>
