@@ -9,77 +9,26 @@ export default class CordinatePage extends Component {
   render() {
     return (
       <Fragment>
-        <h2 style={{ display: "inline-block", fontSize: "18px" }}>
-          ランキング
-        </h2>
-        <p
-          style={{
-            display: "inline-block",
-            fontSize: "12px",
-            color: "#888",
-            margin: "0 0 0 8px"
-          }}
-        >
-          UPDATE 17:00
-        </p>
-        <Row>
+        <div style={{ width: 780, height: 28 }}>
+          <h2 style={{ display: "inline-block", fontSize: "18px" }}>
+            ランキング
+          </h2>
+          <p
+            style={{
+              display: "inline-block",
+              fontSize: "12px",
+              color: "#888",
+              margin: "0 0 0 8px"
+            }}
+          >
+            UPDATE 17:00
+          </p>
+        </div>
+        <Row style={{ margin: "-8px 0 0 -18px" }}>
           <Col span={8}>
             <Card
               hoverable
-              style={{ width: 246, height: 388 }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-          <Col span={8}>
-            <Card
-              hoverable
-              style={{ width: 246, height: 388 }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-          <Col span={8}>
-            <Card
-              hoverable
-              style={{ width: 246, height: 388 }}
-              cover={
-                <img
-                  alt="example"
-                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                />
-              }
-            >
-              <Meta
-                title="Europe Street beat"
-                description="www.instagram.com"
-              />
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={8}>
-            <Card
-              hoverable
-              style={{ width: 246, height: 388 }}
+              style={{ width: 246, height: 388, margin: "18px 0 0 18px" }}
               cover={
                 <img
                   alt="example"

@@ -11,9 +11,9 @@ module.exports = function override(config, env) {
     modifyVars: {
       "@primary-color": "#000000",
       "@layout-body-background": "#f6f7f8 !important",
-      "@layout-header-background": "#ffffff !important",
+      "@layout-header-background": "#ffffff  !important",
       "@layout-sider-background": "#f6f7f8 !important",
-      "@layout-footer-background": "#ffffff !important",
+      "@layout-footer-background": "#ffffff  !important",
       "@layout-header-height": "54px !important",
       "@font-family":
         '"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Lucida Grande", "メイリオ", Verdana, "ＭＳ Ｐゴシック", sans-serif !important'
