@@ -9,12 +9,23 @@ export default class SwitchMenu extends Component {
           <Radio.Group defaultValue="a" buttonStyle="solid">
             <Radio.Button
               value="a"
-              style={{ width: 140, textAlign: "center", background: "#333" }}
+              style={{
+                width: 140,
+                textAlign: "center",
+                fontSize: "13px"
+              }}
             >
-              おすすめ
+              <span style={{ color: "rgba(170, 170, 170, 0.9)" }}>
+                おすすめ
+              </span>
             </Radio.Button>
-            <Radio.Button value="b" style={{ width: 140, textAlign: "center" }}>
-              タイムライン
+            <Radio.Button
+              value="b"
+              style={{ width: 140, textAlign: "center", fontSize: "13px" }}
+            >
+              <span style={{ color: "rgba(170, 170, 170, 0.9)" }}>
+                タイムライン
+              </span>
             </Radio.Button>
           </Radio.Group>
         </Row>

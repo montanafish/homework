@@ -33,7 +33,7 @@ class Wear extends Component {
       <ApolloProvider client={client}>
         <Router>
           <Fragment>
-            <Layout className="layout">
+            <Layout>
               <Header
                 style={{
                   position: "fixed",
@@ -49,23 +49,37 @@ class Wear extends Component {
                 <TopBanner />
               </Layout>
               <MenuBar />
-              <SwitchMenu />
-              <Layout style={{ width: 990, margin: "30px auto 0 auto" }}>
-                <Sider width={180} style={{ float: "left" }}>
-                  <SideBar />
-                </Sider>
-                <Content style={{ float: "right" }}>
-                  <Switch>
-                    <Route path="/" exact component={TopPage} />
-                    <Route path="/Cordinate" exact component={CordinatePage} />
-                    <Route
-                      path="/UserCordinater"
-                      exact
-                      component={UserCordinaterPage}
-                    />
-                    <Route exact component={NoPage} />
-                  </Switch>
-                </Content>
+              <Layout style={{ padding: "10px 0 0 0" }}>
+                <SwitchMenu />
+              </Layout>
+              <Layout>
+                <div
+                  style={{
+                    width: 990,
+                    height: 3000,
+                    margin: "30px auto 0 auto"
+                  }}
+                >
+                  <Sider width={180} style={{ float: "left" }}>
+                    <SideBar />
+                  </Sider>
+                  <Content style={{ width: 780, float: "right" }}>
+                    <Switch>
+                      <Route path="/" exact component={TopPage} />
+                      <Route
+                        path="/Cordinate"
+                        exact
+                        component={CordinatePage}
+                      />
+                      <Route
+                        path="/UserCordinater"
+                        exact
+                        component={UserCordinaterPage}
+                      />
+                      <Route exact component={NoPage} />
+                    </Switch>
+                  </Content>
+                </div>
               </Layout>
               <Row
                 style={{

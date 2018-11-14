@@ -11,8 +11,6 @@ export default class MenuBar extends Component {
         style={{
           mode: "inline",
           textAlign: "center"
-          // background: "#fff",
-          // color: "#888"
         }}
       >
         <Menu.Item

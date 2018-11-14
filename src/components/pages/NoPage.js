@@ -6,7 +6,6 @@ export default class NoPage extends Component {
       <Fragment>
         <div>
           <h1>404</h1>
-          This Page Does Not Exist
         </div>
       </Fragment>
     );
