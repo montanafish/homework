@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Query, Mutation } from "react-apollo";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import "./index.css";
@@ -10,7 +9,6 @@ import TopBanner from "../../components/TopBanner";
 import HeaderContent from "../../components/HeaderContent";
 import SwitchMenu from "../../components/SwitchMenu";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { gql } from "apollo-boost";
 import TopPage from "../../components/pages/TopPage";
 import UserCordinaterPage from "../../components/pages/UserCordinaterPage";
 import CordinatePage from "../../components/pages/CordinatePage";
@@ -35,7 +33,7 @@ class Wear extends Component {
       <ApolloProvider client={client}>
         <Router>
           <Fragment>
-            <Layout>
+            <Layout className="layout">
               <Header
                 style={{
                   position: "fixed",
