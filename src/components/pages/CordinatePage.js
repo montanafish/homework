@@ -3,7 +3,8 @@ import React, { Component, Fragment } from "react";
 import { Card, Avatar, Icon, Button } from "antd";
 
 const { Meta } = Card;
-const UserCard = rankNumber => {
+
+const UserCard = props => {
   return (
     <div>
       <Card
@@ -18,7 +19,7 @@ const UserCard = rankNumber => {
           zIndex: 1
         }}
         cover={
-          <Fragment>
+          <div>
             <p
               style={{
                 position: "absolute",
@@ -28,7 +29,8 @@ const UserCard = rankNumber => {
                 lineHeight: "25px",
                 width: "29px",
                 height: "29px",
-                border: "2px #666 solid",
+                border: "2px solid",
+                borderColor: props.rankColor,
                 background: "rgba(0, 0, 0, 0.8)",
                 textAlign: "center",
                 color: "#fff",
@@ -37,14 +39,14 @@ const UserCard = rankNumber => {
                   'Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
               }}
             >
-              1
+              {props.rankNumber}
             </p>
             <img
               style={{ height: 328 }}
               alt="example"
               src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
             />
-          </Fragment>
+          </div>
         }
       >
         <Meta
@@ -58,11 +60,23 @@ const UserCard = rankNumber => {
             </span>
           }
           description="161cm, JP"
-        />
+        >
+          <Button
+            type="primary"
+            style={{
+              bottom: 10,
+              float: "right",
+              width: 64,
+              height: 38,
+              zIndex: 1000
+            }}
+          />
+        </Meta>
       </Card>
     </div>
   );
 };
+
 const RankingUpdate = () => {
   return (
     <div style={{ width: 780, height: 28 }}>
@@ -88,9 +102,9 @@ export default class CordinatePage extends Component {
         <div style={{ width: 780, height: 479 }}>
           <RankingUpdate />
           <div style={{ width: 798, height: 406, margin: "-8px 0 0 -18px" }}>
-            <UserCard />
-            <UserCard />
-            <UserCard />
+            <UserCard rankNumber={1} rankColor="#ffe400" />
+            <UserCard rankNumber={2} rankColor="#dcdcdc" />
+            <UserCard rankNumber={3} rankColor="#9a5b00" />
 
             <div style={{ background: "#f6f7f8", float: "right" }}>
               <Button

@@ -63,7 +63,9 @@ class Wear extends Component {
                   <Sider width={180} style={{ float: "left" }}>
                     <SideBar />
                   </Sider>
-                  <Content style={{ width: 780, float: "right" }}>
+                  <Content
+                    style={{ width: 780, float: "right", display: "block" }}
+                  >
                     <Switch>
                       <Route path="/" exact component={TopPage} />
                       <Route
