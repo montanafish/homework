@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Menu, Icon, Divider } from "antd";
+import { Link } from "react-router-dom";
 
-export default class SideBar extends Component {
+export default class MainSideBar extends Component {
   render() {
     return (
       <Fragment>
         <h2 style={{ fontSize: "18px" }}>探す</h2>
         <Menu
-          defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["sub1"]}
           style={{
             background: "#f6f7f8",
             width: 180,
@@ -27,9 +26,12 @@ export default class SideBar extends Component {
               margin: "0"
             }}
           >
-            <Icon type="camera" style={{ textAlign: "left" }} />
-            コーディネートを探す
+            <Link to="/CordinatePageMenuBar">
+              <Icon type="camera" style={{ textAlign: "left" }} />
+              コーディネートを探す
+            </Link>
           </Menu.Item>
+
           <Menu.Item
             key="2"
             style={{ padding: "0 0", height: 30, fontSize: "13px" }}

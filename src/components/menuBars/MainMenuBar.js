@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
 
-export default class MenuBar extends Component {
+export default class MainMenuBar extends Component {
   render() {
     return (
       <Menu
@@ -23,9 +23,7 @@ export default class MenuBar extends Component {
               ' "Helvetica Neue", "Helvetica", "Arial", "Verdana", sans-serif'
           }}
         >
-          <Link to="/Cordinate">
-            <div style={{}}>ALL</div>
-          </Link>
+          <Link to="/Cordinate">ALL</Link>
         </Menu.Item>
         <Menu.Item
           key="2"

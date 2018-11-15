@@ -3,15 +3,15 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import "./index.css";
 
-import MenuBar from "../../components/MenuBar";
-import SideBar from "../../components/SideBar";
-import TopBanner from "../../components/TopBanner";
-import HeaderContent from "../../components/HeaderContent";
+import MainMenuBar from "../../components/menuBars/MainMenuBar";
+import MainSideBar from "../../components/sideBars/MainSideBar";
+import TopBanner from "../../components/header/TopBanner";
+import HeaderContent from "../../components/header/HeaderContent";
 import SwitchMenu from "../../components/SwitchMenu";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import TopPage from "../../components/pages/TopPage";
+import TopPage from "../../components/pages/MainPage";
 import UserCordinaterPage from "../../components/pages/UserCordinaterPage";
-import CordinatePage from "../../components/pages/CordinatePage";
+import CordinatePage from "../../components/pages/Page1";
 import NoPage from "../../components/pages/NoPage";
 
 import { Row, Layout } from "antd";
@@ -48,10 +48,11 @@ class Wear extends Component {
               <Layout style={{ marginTop: 54 }}>
                 <TopBanner />
               </Layout>
-              <MenuBar />
-              <Layout style={{ padding: "10px 0 0 0" }}>
-                <SwitchMenu />
+              <Layout>
+                <MainMenuBar />
               </Layout>
+              <Layout style={{ padding: "10px 0 0 0" }} />
+              <SwitchMenu />
               <Layout>
                 <div
                   style={{
@@ -61,7 +62,7 @@ class Wear extends Component {
                   }}
                 >
                   <Sider width={180} style={{ float: "left" }}>
-                    <SideBar />
+                    <MainSideBar />
                   </Sider>
                   <Content
                     style={{ width: 780, float: "right", display: "block" }}

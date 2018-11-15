@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import banner from "../assets/spring_pc_hdr.png";
+import banner from "../../assets/spring_pc_hdr.png";
 
 export default class TopBanner extends Component {
   render() {
