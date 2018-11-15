@@ -1,2 +1,96 @@
-@import "~antd/dist/antd.css";
+@import '~antd/dist/antd.css';
 
+#switch_sex_type {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px #ddd solid;
+  height: 48px;
+}
+
+#switch_sex_type nav {
+  width: 990px;
+  margin: 0 auto 0 auto;
+}
+
+#switch_sex_type nav ul {
+  letter-spacing: -0.4em;
+  text-align: center;
+}
+
+#switch_sex_type nav ul {
+  letter-spacing: -0.4em;
+  text-align: center;
+}
+
+#switch_sex_type nav ul li {
+  width: 160px;
+  display: inline-block;
+  letter-spacing: normal;
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.2;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Verdana', sans-serif;
+  position: relative;
+  color: #888;
+}
+
+.net #switch_sex_type nav ul li {
+  margin: 0 20px 0 20px;
+}
+
+#switch_sex_type nav ul li a {
+  display: block;
+  padding: 14px 0 12px 0;
+  color: #aaa;
+}
+
+#switch_sex_type nav ul li a:before {
+  content: '';
+  display: none;
+  left: 50%;
+  border-bottom: 3px #333 solid;
+  position: absolute;
+  bottom: -1px;
+}
+
+#switch_sex_type nav ul li a:hover {
+  text-decoration: none;
+}
+
+#switch_sex_type nav ul li a:hover:before {
+  display: block;
+}
+
+#switch_sex_type nav ul li.all a:before {
+  width: 80px;
+  margin: 0 0 0 -40px;
+}
+
+#switch_sex_type nav ul li.men a:before {
+  width: 85px;
+  margin: 0 0 0 -42px;
+}
+
+#switch_sex_type nav ul li.women a:before {
+  width: 115px;
+  margin: 0 0 0 -57px;
+}
+
+#switch_sex_type nav ul li.kids a:before {
+  width: 87px;
+  margin: 0 0 0 -43px;
+}
+
+#switch_sex_type nav ul li.world a:before {
+  width: 111px;
+  margin: 0 0 0 -55px;
+}
+
+#switch_sex_type nav ul li.current a {
+  color: #333;
+  cursor: default;
+}
+
+#switch_sex_type nav ul li.current a:before {
+  display: block;
+}
